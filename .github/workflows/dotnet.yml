@@ -1,33 +1,26 @@
 # From https://github.com/orgs/community/discussions/25253
 name: CI
 on:
-workflow_dispatch:
-push:
-branches: [ main ]
-pull_request:
-branches: [ main ]
-
+  workflow_dispatch:
 
 jobs:
-build:
+  build:
+    
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v2
 
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
 
-runs-on: windows-2019
-
-steps:
-- uses: actions/checkout@v2
-
-- name: Setup MSBuild
-  uses: microsoft/setup-msbuild@v1
-
-- name: Setup NuGet
-  uses: NuGet/setup-nuget@v1.0.5
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
   
-- name: setup-msbuild
-  uses: microsoft/setup-msbuild@v1.1
+      - name: setup-msbuild
+        uses: microsoft/setup-msbuild@v1.1
 
-- name: Restore Packages
-  run: nuget restore VCCVConvel.sln
+      - name: Restore Packages
+        run: nuget restore VCCVConvel.sln
 
-- name: Build solution
-  run: msbuild VCCVConvel.sln -t:rebuild -property:Configuration=Release
+      - name: Build solution
+        run: msbuild VCCVConvel.sln -t:rebuild -property:Configuration=Release

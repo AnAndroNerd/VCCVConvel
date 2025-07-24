@@ -24,3 +24,6 @@ jobs:
 
       - name: Build solution
         run: msbuild VCCVConvel.sln -t:rebuild -property:Configuration=Release
+
+      - name: Release
+        uses: softprops/action-gh-release@v2

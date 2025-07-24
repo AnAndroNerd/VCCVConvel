@@ -1,0 +1,1 @@
+An UTAU plugin to automatically set the convel of CVs in a VCCV ust

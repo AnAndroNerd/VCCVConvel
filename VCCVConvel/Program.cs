@@ -12,11 +12,11 @@ namespace sample1
             {
                 float baseConvel = 100 * (note.GetTempo() / 120);
 
-                if (note.GetLength() >= 480)
+                if (note.GetLength() <= 480)
                 {
                     note.SetVelocity((int)(baseConvel + (100 - (100 * (note.GetLength() / 480)))));
                 }
-                if (note.GetLength() < 480)
+                if (note.GetLength() > 480)
                 {
                     note.SetVelocity((int)(baseConvel + (50 + (-100 * (note.GetLength() / 960)))));
                 }

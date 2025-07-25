@@ -20,9 +20,9 @@ namespace sample1
                 {
                     note.SetVelocity((int)(baseConvel + (50 + (-100 * (note.GetLength() / 960)))));
                 }
+            }
 
                 utauPlugin.Output();
             }
         }
     }
-}
